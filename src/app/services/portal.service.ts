@@ -16,7 +16,7 @@ export class PortalService {
   }
 
   insertDataInBD(data: any[]) {
-    const url = 'http://localhost:3000/api/data';
+    const url = 'https://frogmi-backend.netlify.app/.netlify/functions/index/api/data';
     return this.http.post(url, data);
   }
 }
