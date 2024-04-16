@@ -9,12 +9,19 @@ import { featureElement, featureFinalObject } from './models/interface';
 })
 export class AppComponent {
   title = 'front-frogmi';
+  isResultSuccessful: boolean = false;
+  isResultUnsuccessful: boolean = false;
+  isObtainDataUnsuccessful: boolean = false;
+  isLoadingData: boolean = false;
 
   constructor(
     private portalService: PortalService
   ) { }
 
   getAllFeatures() {
+    this.isResultSuccessful = false;
+    this.isResultUnsuccessful = false;
+    this.isLoadingData = true;
     this.portalService.getTotalFeatures().subscribe(
       (value: any) => {
         const newVersionFeatures = value.features.map((feature: featureElement) => ({
@@ -47,6 +54,8 @@ export class AppComponent {
         });
       },
       (error) => {
+        this.isLoadingData = false;
+        this.isObtainDataUnsuccessful = true;
         console.log('error:', error);
       }
     )
@@ -56,9 +65,13 @@ export class AppComponent {
     console.log('body', body);
     this.portalService.insertDataInBD(body).subscribe(
       (response) => {
+        this.isResultSuccessful = true;
+        this.isLoadingData = false;
         console.log('Datos enviados al backend:', response);
       },
       (error) => {
+        this.isResultUnsuccessful = true;
+        this.isLoadingData = false;
         console.error('Error al enviar datos al backend:', error);
       }
     );

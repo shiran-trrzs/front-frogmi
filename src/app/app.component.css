@@ -1,0 +1,59 @@
+.sectionContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.btnRegister {
+    border: none;
+    border-radius: 5px;
+    color: #f7f7f8;
+    background: #000000ba;
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 16px;
+    padding: 0px 10px;
+}
+
+.succMessage {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: green;
+}
+
+.unsuccMessage {
+    font-family: sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    color: red;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(0, 0, 0, 0.1);
+    border-top-color: #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.spinnerContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+}
+
+.spinnerText {
+    font-weight: bold;
+    font-family: sans-serif;
+    font-size: 16px;
+}

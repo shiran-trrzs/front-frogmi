@@ -1,5 +1,24 @@
-<button (click)="getAllFeatures()">
-  <p>
-    Obtener total features
+<section class="sectionContent">
+  <button (click)="getAllFeatures()" class="btnRegister" *ngIf="!isLoadingData">
+    <p>
+      Obtener y registrar features en BD
+    </p>
+  </button>
+
+  <div class="spinnerContainer" *ngIf="isLoadingData">
+    <div class="spinner"></div>
+    <span class="spinnerText"> Obteniendo y registrando datos </span>
+  </div>
+
+  <p *ngIf="isObtainDataUnsuccessful" class="unsuccMessage">
+    Hubo un error al obtener los datos
   </p>
-</button>
+
+  <p *ngIf="isResultSuccessful" class="succMessage">
+    Se registraron exitosamente los features en la BD
+  </p>
+  
+  <p *ngIf="isResultUnsuccessful" class="unsuccMessage">
+    Hubo un error al registrar los datos en la BD
+  </p>
+</section>
